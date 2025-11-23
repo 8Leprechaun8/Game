@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>Game Page</title>
+        <script th:src="@{/js/scheduler.js}"></script>
+        <script th:src="@{/js/logOut.js}"></script>
+    </head>
+    <body>
+        <h1>GAME</h1>
+        <p>Try to kill all enemies.</p>
+        <div id="myDate"></div>
+        <button type="button" th:onclick="scheduler()">Start</button>
+        <button type="button" th:onclick="clickPause()">Pause</button>
+        <button type="button" th:onclick="generate()">Generate A Labirinth</button>
+        <button type="button" th:onclick="logOut()">Log out</button>
+        <script th:inline="javascript">
+            let battleField = /*[[${battleField}]]*/ [];
+            let enemies = /*[[${enemies}]]*/ [];
+            let heroDto = /*[[${heroDto}]]*/ [];
+        </script>
+        <div id="battleField">
+            <canvas id="myCanvas" width="960" height="480"></canvas>
+        </div>
+    </body>
+</html>

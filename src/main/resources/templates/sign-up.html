@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Page</title>
+    <script th:src="@{/js/logOut.js}"></script>
+    <script th:src="@{/js/signUp.js}"></script>
+</head>
+<body>
+<h1>Sign up</h1>
+<p>Please, sign up to be ready for a game.</p>
+<p><input type="text" name="firstName" id="firstName"> Имя</p>
+<p><input type="text" name="secondName" id="secondName"> Фамилия</p>
+<p><input type="text" name="lastName" id="lastName"> Отчество</p>
+<p><input type="text" name="userName" id="userName"> Логин</p>
+<p><input type="text" name="password" id="password"> Пароль</p>
+<p><input type="text" name="email" id="email"> Email</p>
+<p><button type="button" th:onclick="signUp()">Sign Up</button></p>
+<div>
+    <button type="button" th:onclick="logOut()">Log out</button>
+</div>
+<p>jwtToken</p>
+<p id="jwtToken"></p>
+<div>
+    <a href="/auth">Back</a>
+</div>
+<div>
+    <a href="/game">To Game</a>
+</div>
+</body>
+</html>
