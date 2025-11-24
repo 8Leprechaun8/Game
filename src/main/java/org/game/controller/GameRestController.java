@@ -33,7 +33,7 @@ public class GameRestController {
 
     @PostMapping(value = "/action")
     public void sendAction(@RequestHeader("Authorization") String token, @RequestBody ActionData data) {
-        System.out.println(token);
+        data.setUsername(token);
         kafkaProducer.sendMessage("actions", data);
     }
 
