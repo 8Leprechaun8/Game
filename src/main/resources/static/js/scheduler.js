@@ -6,7 +6,6 @@ var enemiesVar;
 var heroVar;
 
 function bodyOfScheduler() {
-    console.log(Date.now());
 
     let jwtToken = getCookie("jwtToken");
     let xhr = new XMLHttpRequest();
@@ -18,13 +17,19 @@ function bodyOfScheduler() {
       if (xhr.status != 200) { // анализируем HTTP-статус ответа, если статус не 200, то произошла ошибка
         console.log(`Ошибка ${xhr.status}: ${xhr.statusText}`); // Например, 404: Not Found
       } else { // если всё прошло гладко, выводим результат
-        mydata = Date.now();
-        document.getElementById("myDate").innerHTML = mydata;
-        //console.log(xhr.responseText);
         const serverData = JSON.parse(xhr.response);
         battleFieldVar = serverData.structure;
         enemiesVar = serverData.enemies;
         heroVar = serverData.player;
+
+        if (heroVar == null) {
+                    document.getElementById("myDate").innerHTML = "Game over!";
+        } else if (enemiesVar == null) {
+                document.getElementById("myDate").innerHTML = "You Win!";
+        } else {
+            document.getElementById("myDate").innerHTML = "";
+        }
+
         createPicture();
       }
     };
